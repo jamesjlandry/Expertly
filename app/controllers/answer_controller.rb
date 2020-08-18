@@ -17,6 +17,7 @@ class AnswerController < ApplicationController
         answer.update(answer_params)
 
         render json: answer
+    end
 
     private
 

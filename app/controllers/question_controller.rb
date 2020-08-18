@@ -10,6 +10,7 @@ class QuestionController < ApplicationController
         question = Question.create(question_params)
 
         render json: question
+    end
 
         private
 
