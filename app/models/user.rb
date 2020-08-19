@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
     has_many :credentials
     has_many :fields, through: :credentials
     has_many :questions
