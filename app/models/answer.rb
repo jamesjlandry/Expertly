@@ -1,4 +1,4 @@
 class Answer < ApplicationRecord
     belongs_to :question
-    belongs_to :field
+    belongs_to :user
 end
