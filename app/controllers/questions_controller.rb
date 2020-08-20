@@ -8,7 +8,6 @@ class QuestionsController < ApplicationController
 
     def create
         question = Question.create(question_params)
-
         render json: question
     end
 

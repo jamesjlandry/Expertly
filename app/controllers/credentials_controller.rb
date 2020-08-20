@@ -8,9 +8,10 @@ class CredentialsController < ApplicationController
     end
 
     def create
+        
         credential = Credential.create(credential_params)
-
-        render json: credential
+        user = User.find_by(id: params[:user_id])
+        render json: user, :include =>  [:credentialfields, :questionfields, :answeredquestions]
     end
 
     private

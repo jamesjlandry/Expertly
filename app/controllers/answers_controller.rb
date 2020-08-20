@@ -7,9 +7,16 @@ class AnswersController < ApplicationController
     end
 
     def create
-        answer = Answer.create(answer_params)
-
-        render json: answer
+            user = User.find_by(id: params[:user_id])
+            question = Question.find_by(id: params[:question_id])
+                user.credentials.each do |credential|
+                    if credential.field.id == question.field.id
+                        answer = Answer.create(answer_params)
+                        render json: answer
+                    else
+                        render json: {message: "You must be an expert in the field to answer this question"}
+                    end
+                end
     end
 
     def update
@@ -22,7 +29,7 @@ class AnswersController < ApplicationController
     private
 
     def answer_params
-        params.require(:answer).permit(:question_id, :text, :upvotes, :field_id)
+        params.require(:answer).permit(:question_id, :text, :upvotes, :user_id)
     end
 
 end
