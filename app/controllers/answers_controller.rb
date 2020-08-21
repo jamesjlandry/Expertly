@@ -9,10 +9,9 @@ class AnswersController < ApplicationController
     def create
             user = User.find_by(id: params[:answer][:user_id])
             question = Question.find_by(id: params[:answer][:question_id])
-            byebug
                 user.credentials.each do |credential|
                     if credential.field.id == question.field.id
-                        answer = Answer.create({question_id: params[:question_id], text: params[:text], upvotes: params[:upvotes], user_id: params[:user_id]})
+                        answer = Answer.create({question_id: params[:answer][:question_id], text: params[:answer][:text], upvotes: params[:answer][:upvotes], user_id: params[:answer][:user_id]})
                         render json: answer
                     else
                         render json: {message: "You must be an expert in the field to answer this question"}
