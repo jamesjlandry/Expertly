@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/logged_in', to: 'sessions#logged_in'
+  post '/login', to: 'sessions#login'
+  delete '/log_out', to: 'sessions#log_out'
+  resources :answers
+  resources :questions
+  resources :users
+  resources :fields
+  resources :credentials
 end

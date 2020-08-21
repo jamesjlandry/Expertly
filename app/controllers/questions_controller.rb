@@ -1,4 +1,4 @@
-class QuestionController < ApplicationController
+class QuestionsController < ApplicationController
 
     def index
         questions = Question.all
@@ -8,8 +8,8 @@ class QuestionController < ApplicationController
 
     def create
         question = Question.create(question_params)
-
         render json: question
+    end
 
         private
 
