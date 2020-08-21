@@ -9,15 +9,15 @@ class CredentialsController < ApplicationController
 
     def create
         
-        credential = Credential.create(credential_params)
+        credential = Credential.create({user_id: params[:credentials][:user_id], years_in_field: params[:credentials][:years_in_field], degree: params[:credentials][:degree], field_id: params[:credentials][:field_id]})
         user = User.find_by(id: params[:user_id])
         render json: user, :include =>  [:credentialfields, :questionfields, :answeredquestions]
     end
 
-    private
+    # private
 
-    def credential_params
-        params.require(:credential).permit(:user_id, :years_in_field, :degree, :field_id)
-    end
+    # def credential_params
+    #     params.require(:credential).permit(:user_id, :years_in_field, :degree, :field_id)
+    # end
     
 end
