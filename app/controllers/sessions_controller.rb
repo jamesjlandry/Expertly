@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
             user = User.find_by(id: session[:user_id])
             render json: {username: user.username, id: user.id}
         else
-            render json: {message: 'please log in'}
+            render json: nil 
         end
     end
 

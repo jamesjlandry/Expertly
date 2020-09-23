@@ -7,6 +7,7 @@ class AnswersController < ApplicationController
     end
 
     def create
+     
             user = User.find_by(id: params[:answer][:user_id])
             question = Question.find_by(id: params[:answer][:question_id])
                 user.credentials.each do |credential|
